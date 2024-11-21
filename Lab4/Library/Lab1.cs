@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Library
 {
-    public class FileHandler
+    public class FileHandler1
     {
         public int N { get; private set; }
         public int M { get; private set; }
@@ -16,7 +16,7 @@ namespace Library
         private readonly string inputFile;
         private readonly string outputFile;
 
-        public FileHandler(string inputFile, string outputFile)
+        public FileHandler1(string inputFile, string outputFile)
         {
             this.inputFile = inputFile;
             this.outputFile = outputFile;
@@ -185,7 +185,7 @@ namespace Library
             try
             {
                 // Create a file handler instance with the input file name
-                var fileHandler = new FileHandler(inputFilePath, outputFilePath);
+                var fileHandler = new FileHandler1(inputFilePath, outputFilePath);
                 // Read and validate data from the input file
                 fileHandler.ReadAndValidate();
 

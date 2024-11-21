@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Library
 {
-    public static class FileManager
+    public class FileHandler2
     {
-        public InputData ReadInput(string inputFilePath)
+        // Метод для читання та валідації вхідних даних
+        public (int N, int[] Coins, int K) ReadInput(string inputFilePath)
         {
             if (!File.Exists(inputFilePath))
             {
@@ -42,29 +43,19 @@ namespace Library
 
             int[] coins = coinsStr.Select(int.Parse).ToArray();
 
-            return new InputData
-            {
-                N = N,
-                Coins = coins,
-                K = K
-            };
+            return (N, coins, K);
         }
 
+        // Метод для запису результату у вихідний файл
         public void WriteOutput(string outputFilePath, int result)
         {
             File.WriteAllText(outputFilePath, result.ToString());
         }
     }
 
-    public class InputData
+    public class CoinCalculator
     {
-        public int N { get; set; }
-        public int[] Coins { get; set; }
-        public int K { get; set; }
-    }
-
-    public static class CoinCalculator
-    {
+        // Метод для обчислення мінімальної кількості монет
         public int GetMinCoins(int[] coins, int K)
         {
             int[] dp = new int[K + 1];
@@ -90,28 +81,31 @@ namespace Library
             Console.WriteLine($"Input File Path: {inputFilePath}");
             Console.WriteLine($"Output File Path: {outputFilePath}");
 
+            var fileHandler = new FileHandler2();
+            var coinCalculator = new CoinCalculator();
+
             try
             {
-                // Чтение и валидация входных данных
-                InputData inputData = FileManager.ReadInput(inputFilePath);
+                // Читання та валідація вхідних даних
+                var (N, coins, K) = fileHandler.ReadInput(inputFilePath);
 
-                // Вычисление минимального количества монет
-                int result = CoinCalculator.GetMinCoins(inputData.Coins, inputData.K);
+                // Обчислення мінімальної кількості монет
+                int result = coinCalculator.GetMinCoins(coins, K);
 
-                // Запись результата в выходной файл
-                FileManager.WriteOutput(outputFilePath, result);
+                // Запис результату у вихідний файл
+                fileHandler.WriteOutput(outputFilePath, result);
 
                 Console.WriteLine("Lab 2 executed successfully.");
             }
             catch (InvalidDataException ex)
             {
                 Console.WriteLine($"Invalid data: {ex.Message}");
-                FileManager.WriteOutput(outputFilePath, -1);
+                fileHandler.WriteOutput(outputFilePath, -1);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                FileManager.WriteOutput(outputFilePath, -1);
+                fileHandler.WriteOutput(outputFilePath, -1);
             }
         }
     }

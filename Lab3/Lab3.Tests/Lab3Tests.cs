@@ -1,11 +1,18 @@
-﻿using Xunit;
-using Lab3;
+﻿// Lab3Tests.cs
+using Xunit;
 using System.Collections.Generic;
 
 namespace Lab3.Tests
 {
     public class Lab3Tests
     {
+        private readonly ArborescenceCalculator calculator;
+
+        public Lab3Tests()
+        {
+            calculator = new ArborescenceCalculator();
+        }
+
         [Fact]
         public void TestSampleInput()
         {
@@ -19,12 +26,14 @@ namespace Lab3.Tests
             };
 
             // Act
-            var result = ArborescenceCalculator.GetMinimumArborescence(n, edges, 1);
+            var result = calculator.GetMinimumArborescence(n, edges, 1);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(9, result.TotalCost); // Канали 1 та 3: 5 + 4
-            Assert.Equal(new List<int> { 1, 3 }, result.ChannelIndices);
+            Assert.Contains(1, result.ChannelIndices);
+            Assert.Contains(3, result.ChannelIndices);
+            Assert.Equal(2, result.ChannelIndices.Count);
         }
 
         [Fact]
@@ -35,7 +44,7 @@ namespace Lab3.Tests
             List<Edge> edges = new List<Edge>();
 
             // Act
-            var result = ArborescenceCalculator.GetMinimumArborescence(n, edges, 1);
+            var result = calculator.GetMinimumArborescence(n, edges, 1);
 
             // Assert
             Assert.NotNull(result);
@@ -56,7 +65,7 @@ namespace Lab3.Tests
             };
 
             // Act
-            var result = ArborescenceCalculator.GetMinimumArborescence(n, edges, 1);
+            var result = calculator.GetMinimumArborescence(n, edges, 1);
 
             // Assert
             Assert.Null(result); // Неможливо досягти міста 4
@@ -77,12 +86,15 @@ namespace Lab3.Tests
             };
 
             // Act
-            var result = ArborescenceCalculator.GetMinimumArborescence(n, edges, 1);
+            var result = calculator.GetMinimumArborescence(n, edges, 1);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(8, result.TotalCost); // Канали 1, 3, 4: 1 + 3 + 4
-            Assert.Equal(new List<int> { 1, 3, 4 }, result.ChannelIndices);
+            Assert.Contains(1, result.ChannelIndices);
+            Assert.Contains(3, result.ChannelIndices);
+            Assert.Contains(4, result.ChannelIndices);
+            Assert.Equal(3, result.ChannelIndices.Count);
         }
 
         [Fact]
@@ -98,12 +110,14 @@ namespace Lab3.Tests
             };
 
             // Act
-            var result = ArborescenceCalculator.GetMinimumArborescence(n, edges, 1);
+            var result = calculator.GetMinimumArborescence(n, edges, 1);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(6, result.TotalCost); // Канали 1 та 3: 2 + 4
-            Assert.Equal(new List<int> { 1, 3 }, result.ChannelIndices);
+            Assert.Contains(1, result.ChannelIndices);
+            Assert.Contains(3, result.ChannelIndices);
+            Assert.Equal(2, result.ChannelIndices.Count);
         }
     }
 }

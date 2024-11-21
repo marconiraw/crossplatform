@@ -129,29 +129,29 @@ namespace Lab4
                     });
                 });
 
-                //runCmd.Command("lab3", lab3Cmd =>
-                //{
-                //    lab3Cmd.Description = "Execute Lab 3";
-                //    lab3Cmd.OnExecute(() =>
-                //    {
-                //        string dirPath = Environment.GetEnvironmentVariable("LAB_PATH") ??
-                //                         Path.Combine(
-                //                             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                //                             "source",
-                //                             "repos",
-                //                             "marconiraw",
-                //                             "crossplatform",
-                //                             "Lab3"
-                //                         );
+                runCmd.Command("lab3", lab3Cmd =>
+                {
+                    lab3Cmd.Description = "Execute Lab 3";
+                    lab3Cmd.OnExecute(() =>
+                    {
+                        string dirPath = Environment.GetEnvironmentVariable("LAB_PATH") ??
+                                         Path.Combine(
+                                             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                                             "source",
+                                             "repos",
+                                             "marconiraw",
+                                             "crossplatform",
+                                             "Lab3"
+                                         );
 
-                //        string inputPath = inputOption.HasValue() ? inputOption.Value() : Path.Combine(dirPath, DefaultInput);
-                //        string outputPath = outputOption.HasValue() ? outputOption.Value() : Path.Combine(dirPath, DefaultOutput);
+                        string inputPath = inputOption.HasValue() ? inputOption.Value() : Path.Combine(dirPath, DefaultInput);
+                        string outputPath = outputOption.HasValue() ? outputOption.Value() : Path.Combine(dirPath, DefaultOutput);
 
-                //        Lab3.Run(inputPath, outputPath);
-                //        Console.WriteLine("Lab 3 executed successfully.");
-                //        return 0;
-                //    });
-                //});
+                        Lab3.Run(inputPath, outputPath);
+                        Console.WriteLine("Lab 3 executed successfully.");
+                        return 0;
+                    });
+                });
             });
 
             commandApp.OnExecute(() =>
