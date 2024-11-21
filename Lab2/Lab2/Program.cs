@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace Lab2
 {
@@ -13,28 +12,32 @@ namespace Lab2
             string inputFile = Path.Combine(projectDirectory, "input.txt");
             string outputFile = Path.Combine(projectDirectory, "output.txt");
 
+            // Створення об'єктів класів
+            var fileHandler = new FileHandler();
+            var coinCalculator = new CoinCalculator();
+
             try
             {
-                // Чтение и валидация входных данных
-                InputData inputData = FileHandler.ReadInput(inputFile);
+                // Читання та валідація вхідних даних
+                var (N, coins, K) = fileHandler.ReadInput(inputFile);
 
-                // Вычисление минимального количества монет
-                int result = CoinCalculator.GetMinCoins(inputData.Coins, inputData.K);
+                // Обчислення мінімальної кількості монет
+                int result = coinCalculator.GetMinCoins(coins, K);
 
-                // Запись результата в выходной файл
-                FileHandler.WriteOutput(outputFile, result);
+                // Запис результату у вихідний файл
+                fileHandler.WriteOutput(outputFile, result);
 
                 Console.WriteLine("Lab 2 executed successfully.");
             }
             catch (InvalidDataException ex)
             {
                 Console.WriteLine($"Invalid data: {ex.Message}");
-                FileHandler.WriteOutput(outputFile, -1);
+                fileHandler.WriteOutput(outputFile, -1);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                FileHandler.WriteOutput(outputFile, -1);
+                fileHandler.WriteOutput(outputFile, -1);
             }
         }
     }

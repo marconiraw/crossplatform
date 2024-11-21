@@ -4,9 +4,10 @@ using System.Linq;
 
 namespace Lab2
 {
-    public static class FileHandler
+    public class FileHandler
     {
-        public static InputData ReadInput(string inputFilePath)
+        // Метод для читання та валідації вхідних даних
+        public (int N, int[] Coins, int K) ReadInput(string inputFilePath)
         {
             if (!File.Exists(inputFilePath))
             {
@@ -41,15 +42,11 @@ namespace Lab2
 
             int[] coins = coinsStr.Select(int.Parse).ToArray();
 
-            return new InputData
-            {
-                N = N,
-                Coins = coins,
-                K = K
-            };
+            return (N, coins, K);
         }
 
-        public static void WriteOutput(string outputFilePath, int result)
+        // Метод для запису результату у вихідний файл
+        public void WriteOutput(string outputFilePath, int result)
         {
             File.WriteAllText(outputFilePath, result.ToString());
         }

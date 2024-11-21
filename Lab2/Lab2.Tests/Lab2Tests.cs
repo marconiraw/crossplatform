@@ -1,9 +1,17 @@
-﻿using Xunit;
+﻿// Lab2Tests.cs
+using Xunit;
 
 namespace Lab2.Tests
 {
     public class Lab2Tests
     {
+        private readonly CoinCalculator coinCalculator;
+
+        public Lab2Tests()
+        {
+            coinCalculator = new CoinCalculator();
+        }
+
         [Theory]
         [InlineData(new int[] { 4, 9 }, 2, -1)]
         [InlineData(new int[] { 1, 3, 4 }, 6, 2)]
@@ -18,7 +26,7 @@ namespace Lab2.Tests
         public void GetMinCoins_Test(int[] coins, int K, int expected)
         {
             // Act
-            int result = CoinCalculator.GetMinCoins(coins, K);
+            int result = coinCalculator.GetMinCoins(coins, K);
 
             // Assert
             Assert.Equal(expected, result);
