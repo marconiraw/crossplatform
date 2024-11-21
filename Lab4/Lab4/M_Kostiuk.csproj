@@ -16,6 +16,9 @@
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>m_kostiuk</ToolCommandName>
 		<Version>1.0.0</Version>
+		<Authors>m_kostiuk</Authors>
+		<Description>Cross-platform Laboratory Application - Version 4</Description>
+		<PackageTags>Lab;Tool;CrossPlatform</PackageTags>
 	</PropertyGroup>
 
 </Project>
