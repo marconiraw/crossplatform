@@ -14,7 +14,7 @@ namespace CardGame
         public string[] AttackingCards { get; private set; } // Make non-nullable
 
         private readonly string inputFile;
-        private readonly string outputFile = "OUTPUT.TXT";
+        private readonly string outputFile = "output.txt";
 
         public FileHandler(string inputFile)
         {

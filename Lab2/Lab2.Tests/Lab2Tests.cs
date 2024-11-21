@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using Lab2;
 
 namespace Lab2.Tests
 {
@@ -19,7 +18,7 @@ namespace Lab2.Tests
         public void GetMinCoins_Test(int[] coins, int K, int expected)
         {
             // Act
-            int result = Program.GetMinCoins(coins, K);
+            int result = CoinCalculator.GetMinCoins(coins, K);
 
             // Assert
             Assert.Equal(expected, result);

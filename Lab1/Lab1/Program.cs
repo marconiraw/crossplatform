@@ -9,7 +9,7 @@ namespace CardGame
             try
             {
                 // Create a file handler instance with the input file name
-                var fileHandler = new FileHandler("INPUT.TXT");
+                var fileHandler = new FileHandler("input.txt");
                 // Read and validate data from the input file
                 fileHandler.ReadAndValidate();
 
@@ -23,7 +23,7 @@ namespace CardGame
             catch (ArgumentException ex)
             {
                 // If any validation error occurs, write the error message to the output file
-                File.WriteAllText("OUTPUT.TXT", ex.Message);
+                File.WriteAllText("output.txt", ex.Message);
             }
         }
     }
