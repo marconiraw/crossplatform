@@ -1,0 +1,12 @@
+@model WebApplicationLab5.Models.UserInfo
+
+<h2>Профіль користувача</h2>
+<div>
+    <p><strong>Username:</strong> @Model.Username</p>
+    <p><strong>ПІБ:</strong> @Model.FullName</p>
+    <p><strong>Телефон:</strong> @Model.Phone</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+</div>
+<form class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout" method="post" id="logoutForm">
+    <button type="submit">Logout</button>
+</form>
